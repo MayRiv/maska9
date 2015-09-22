@@ -1,14 +1,21 @@
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="maska9.css"/>
-</head>
+
 <body>
 	<?php getView("HeaderView.inc", $obj);?>
 	<div id="feed">
-	<?php
-	foreach ($obj as $player)
-    		echo $player['Name'];
+	<table class="table_dark">
+			<tr>
+			    <th>Место</th>
+	    		<th>Ник</th>
+			    <th>Команда</th>
+	    	</tr>
+		<?php
+		foreach ($obj as $player)
+		{
+    			echo "<td>1</td><td>".$player['Name']."</td><td>qwerty</td>";
+		}
 	?>
+	</table>
+	
 	</div>
 	<?php getView("FooterView.inc", $obj);?>
 </body>

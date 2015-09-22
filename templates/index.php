@@ -1,6 +1,6 @@
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="maska9.css"/>
+	<link rel="stylesheet" type="text/css" href="templates/maska9.css"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
 </head>
 <body>
