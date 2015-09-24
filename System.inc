@@ -28,10 +28,10 @@ class System
 		else
 		{
 			$stat = array();
-			$result = SQL("SELECT RoundNumber, Player, Role, Statuses.Status from Teams join Players USING(TeamId) join PlayerGame ON(Players.Name = Player) join Games using(GameId) join Statuses on (Games.Status = Statuses.StatusId) where TeamId = ? order by Player, Games.RoundNumber", array($_SESSION['team']))->getAll();
+			$result = SQL("SELECT RoundNumber, Player, Role, BestVotes, Statuses.Status from Teams join Players USING(TeamId) join PlayerGame ON(Players.Name = Player) join Games using(GameId) join Statuses on (Games.Status = Statuses.StatusId) where TeamId = ? order by Player, Games.RoundNumber", array($_SESSION['team']))->getAll();
 			foreach($result as $obj)
 			{
-				$stat[$obj['Player']] = array($obj['Role'], $obj['Status']);
+				$stat[$obj['Player']][] = array($obj['Role'], $obj['Status'], $obj['BestVotes']);
 			}
 			getView("TeamsView.inc", $stat);
 		}
@@ -66,10 +66,13 @@ class System
 				SQL("insert into Games (`GameId`,`RoomId`,`Status`,`MasterId`, `RoundNumber`) values (?,?,?,?,?)", array($gameId+1,$roomId, $status, $masterId, $_POST['RoundNumber']));
 				$players = array();
 				for ($i = 0; $i < 10; $i++)
-				$players[$_POST["Player$i"]] = $_POST["Role$i"];
-				foreach ($players as $playerName => $playerRole)
-    					SQL("insert into PlayerGame (Player,GameId,Role) values (?,?,?)", array($playerName, $gameId , $playerRole ));
-				echo "<a href=\"/maska9/?action=insertGame\">Insert another game</a>";
+				$players[$_POST["Player$i"]] = array('Role'=>$_POST["Role$i"], 'BestVotes'=>0,'DressCode'=>0,'Surprise'=>0, 'Penalty' => 0);
+				for ($i = 0; $i < 4; $i++)
+					$players[$_POST["BestPlayer$i"]]['BestVotes'] = $_POST["BestVotes$i"];
+				foreach ($players as $playerName => $info)
+    					//SQL("insert into PlayerGame (Player,GameId,Role) values (?,?,?)", array($playerName, $gameId, $playerRole ));
+SQL("INSERT INTO `PlayerGame`(`Id`, `Player`,`GameId`,`Role`,`BestVotes`,`DressCode`,`Surprise`,`Penalty`) VALUES (null,?,?,?,?,?,?,?)", array($playerName, $gameId, $info['Role'], $info['BestVotes'], $info['DressCode'], $info['Surprise'], $info['Penalty']));
+				getView("HeaderView.inc", null);
 			}
 		}
 	}

@@ -22,9 +22,9 @@
 		</div>
 		<div>
 		<div>
-		<p>Голосование за лучшего игрока. Оставьте пустой строчку, если кандидатов меньше 4.</p>
+		<p>Голосование за лучшего игрока.</p>
 <?php	for ( $i = 0; $i < 4; $i++) 
-			echo "<p><input type='text' name='BestPlayer$i' placeholder='Ник игрока' list='players_list'/><input type='text' name='BestPoints$i' placeholder='Количество голосов'/></p>";
+			echo "<p><input type='text' name='BestPlayer$i' placeholder='Ник игрока' list='players_list'/><input type='text' name='BestVotes$i' placeholder='Количество голосов'/></p>";
 ?>
 		</div>
 		

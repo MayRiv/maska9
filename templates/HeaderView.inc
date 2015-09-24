@@ -14,9 +14,9 @@
 				<span class="text-top">Командный рейтинг</span>
 				<span class="text-bottom">Рейтинг команд</span>
 			</a></li>
-			<li><a href="#">
-				<span class="text-top">Подробный рейтинг</span>
-				<span class="text-bottom">Инфа про игры</span>
+			<li><a href="/maska9/?action=insertGame">
+				<span class="text-top">Добавить игру</span>
+				<span class="text-bottom">Для организатора</span>
 			</a></li>
 		</ul>
 		</div>
