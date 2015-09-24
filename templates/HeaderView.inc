@@ -10,7 +10,7 @@
 				<span class="text-top">Личный рейтинг </span>
 				<span class="text-bottom">Рейтинг игроков</span>
 			</a></li>
-			<li><a href="#">
+			<li><a href="/maska9/?action=getTeams">
 				<span class="text-top">Командный рейтинг</span>
 				<span class="text-bottom">Рейтинг команд</span>
 			</a></li>
