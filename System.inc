@@ -66,12 +66,18 @@ class System
 				SQL("insert into Games (`GameId`,`RoomId`,`Status`,`MasterId`, `RoundNumber`) values (?,?,?,?,?)", array($gameId+1,$roomId, $status, $masterId, $_POST['RoundNumber']));
 				$players = array();
 				for ($i = 0; $i < 10; $i++)
-				$players[$_POST["Player$i"]] = array('Role'=>$_POST["Role$i"], 'BestVotes'=>0,'DressCode'=>0,'Surprise'=>0, 'Penalty' => 0);
+				$players[$_POST["Player$i"]] = array('Role'=>$_POST["Role$i"], 'BestVotes'=>0,'DressCode'=>$_POST["DressCode$i"],"Surprise"=>0, 'Penalty' => $_POST["Penalty$i"]);
 				for ($i = 0; $i < 4; $i++)
 					$players[$_POST["BestPlayer$i"]]['BestVotes'] = $_POST["BestVotes$i"];
+				foreach($_POST["Surprise"] as $name)
+				{	
+					if (strlen($name) > 0)
+						$players[$name]["Surprise"] = 1;
+				}
 				foreach ($players as $playerName => $info)
-    					//SQL("insert into PlayerGame (Player,GameId,Role) values (?,?,?)", array($playerName, $gameId, $playerRole ));
-SQL("INSERT INTO `PlayerGame`(`Id`, `Player`,`GameId`,`Role`,`BestVotes`,`DressCode`,`Surprise`,`Penalty`) VALUES (null,?,?,?,?,?,?,?)", array($playerName, $gameId, $info['Role'], $info['BestVotes'], $info['DressCode'], $info['Surprise'], $info['Penalty']));
+				{
+SQL("INSERT INTO `PlayerGame`(`Id`, `Player`,`GameId`,`Role`,`BestVotes`,`DressCode`,`Surprise`,`Penalty`) VALUES (null,?,?,?,?,?,?,?)", array($playerName, $gameId, $info['Role'], $info['BestVotes'], $info['DressCode'], $info["Surprise"], $info['Penalty']));
+				}
 				getView("HeaderView.inc", null);
 			}
 		}

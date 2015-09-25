@@ -7,30 +7,38 @@
 		<div>
 		<p><input type='text' name="Master" placeholder="Ник ведущего"></p>
 		<p><input type='text' name="RoundNumber" placeholder="Номер раунда"></p>			
-		Список игроков      Роль Оценка ведущего
+		<table>
+		<tr><th>Список игроков</th><th>Роль</th><th>Оценка ведущего</th><th>Штрафные баллы</th><th>Дресс-код</th>
 <?php	for ( $i = 0; $i < 10; $i++)	
-	echo "<p><input type='text' name=Player$i list='players_list'>
-		<select name='Role$i'>
+	echo "<tr><td><input type='text' name=Player$i list='players_list'></td>
+		<td><select name='Role$i'>
 			<option>Citizen</option>
 			<option>Sherif</option>
 			<option>Mafia</option>
 			<option>Don</option>
-		</select>
-		<input type='text' name='MasterMark'/>
-</p>";
+		</select></td>
+		<td><input type='text' name='MasterMark[]'/></td>
+		<td><input type='text' name='Penalty$i'/></td>
+		<td><input type='text' name='DressCode$i'/></td></tr>";
 ?>
-		</div>
+		</table></div>
 		<div>
 		<div>
-		<p>Голосование за лучшего игрока.</p>
+		<table><caption>Голосование за лучшего игрока.</caption>
+		<tr><th>Ник игрока</th><th>Баллы</th></tr>
 <?php	for ( $i = 0; $i < 4; $i++) 
-			echo "<p><input type='text' name='BestPlayer$i' placeholder='Ник игрока' list='players_list'/><input type='text' name='BestVotes$i' placeholder='Количество голосов'/></p>";
+			echo "<tr><td><input type='text' name='BestPlayer$i' placeholder='Ник игрока' list='players_list'/></td><td><input type='text' name='BestVotes$i' placeholder='Количество голосов'/></td></tr>";
 ?>
-		</div>
-		
+		<table></div>
+		<div>
+			<p>Выберете до 3 игроков в номинацию сюрприз, оставьте поле пустым если нужно.</p>
+<?php	for ( $i = 0; $i < 3; $i++) 
+			echo "<input type='text' name='Surprise[]' placeholder='Ник игрока' list='players_list'/>";
+?>
+		</div>		
+			Укажите победившую команду
 			<select name="result">
-				<option disabled selected>Укажите победившую команду</option>
-				<option value="City">City</option>
+				<option value="City" selected>City</option>
 				<option value="Mafia">Mafia</option>
 				<option value="Draw">Draw</option>
 			</select>

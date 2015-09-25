@@ -71,6 +71,9 @@
 	background-color: #595959;
 	margin: 10px auto;
 }
+table {
+	margin: 0 auto;
+}
 .table_dark th {
 	color: #EDB749;
 	border-bottom: 1px solid #37B5A5;
