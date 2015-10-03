@@ -6,11 +6,12 @@
 	<?php getView("HeaderView.inc", $obj);?>
 	<div>
 		<form action="authCaptain.php" method="post">
-  			<p><input type="text" name="Team"></p>
-			<p><input type="text" name="Pass"></p>
+  			<p><input type="text" name="Team" placeholder="Введите номер команды"></p>
+			<p><input type="text" name="Pass"placeholder="Введите пароль"></p>
   			<p><input type="submit" value="Authorize"></p>
  		</form>
 	</div>
-	<?php getView("FooterView.inc", $obj);?>
+<?php getView("Footer.inc", $obj);?>
+
 </body>
 </html>

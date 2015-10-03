@@ -1,4 +1,3 @@
-	
 <?php
 require("DataSet.inc");
 
@@ -22,7 +21,9 @@ public function connect($host,$dbname,$user,$password)
 {
 	try
 	{
-		$this->DBH = new PDO("mysql:host=$host;dbname=$dbname", $user, $password); 
+		$this->DBH = new PDO("mysql:host=$host;dbname=$dbname;", $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")); 
+		$this->DBH->exec('SET NAMES utf8');
+
 	}
 	catch(PDOException $e)
 	{

@@ -3,12 +3,13 @@
 <div id="inserter">
 <div>
 	
-	<form action="/maska9/?action=insertGame" method="post">
+	<form action="/?action=insertGame" method="post">
 		<div>
-		<p><input type='text' name="Master" placeholder="Ник ведущего"></p>
-		<p><input type='text' name="RoundNumber" placeholder="Номер раунда"></p>			
+		<p><input type='text' name="Master" placeholder="РќРёРє РІРµРґСѓС‰РµРіРѕ" list='masters_list'></p>
+		<p><input type='text' name="RoundNumber" placeholder="РќРѕРјРµСЂ СЂР°СѓРЅРґР°"></p>			
 		<table>
-		<tr><th>Список игроков</th><th>Роль</th><th>Оценка ведущего</th><th>Штрафные баллы</th><th>Дресс-код</th>
+						
+		<tr><th>РРіСЂРѕРє</th><th>Р РѕР»СЊ</th><th>РћС†РµРЅРєР° РІРµРґСѓС‰РµРіРѕ</th><th>РЁС‚СЂР°С„РЅС‹Рµ Р±Р°Р»Р»С‹</th><th>Р”СЂРµСЃСЃРљРѕРґ</th>
 <?php	for ( $i = 0; $i < 10; $i++)	
 	echo "<tr><td><input type='text' name=Player$i list='players_list'></td>
 		<td><select name='Role$i'>
@@ -24,19 +25,21 @@
 		</table></div>
 		<div>
 		<div>
-		<table><caption>Голосование за лучшего игрока.</caption>
-		<tr><th>Ник игрока</th><th>Баллы</th></tr>
-<?php	for ( $i = 0; $i < 4; $i++) 
-			echo "<tr><td><input type='text' name='BestPlayer$i' placeholder='Ник игрока' list='players_list'/></td><td><input type='text' name='BestVotes$i' placeholder='Количество голосов'/></td></tr>";
+		<table><caption>Р“РѕР»РѕСЃРѕРІР°РЅРёРµ Р·Р° Р»СѓС‡С€РµРіРѕ РёРіСЂРѕРєР°</caption>
+		<tr><th>РќРёРє РёРіСЂРѕРєР°</th><th>Р‘Р°Р»Р»С–</th></tr>
+<?php	for ( $i = 0; $i < 5; $i++) 
+			echo "<tr><td><input type='text' name='BestPlayer$i' placeholder='РќРёРє РёРіСЂРѕРєР°' list='players_list'/></td><td><input type='text' name='BestVotes$i' placeholder='РљРѕР»РёС‡РµСЃС‚РІРѕ РіРѕР»РѕСЃРѕРІ'/></td></tr>";
 ?>
+		<input type='text' name='BestMovePlayer' placeholder='РџРµСЂРІРѕСѓР±РёРµРЅРЅС–Р№' list='players_list'/>
+		<input type='text' name='BestMovePoints' placeholder="Р‘Р°Р»Р»С‹ Р·Р° Р»СѓС‡С€РёР№ С…РѕРґ" />
 		<table></div>
 		<div>
-			<p>Выберете до 3 игроков в номинацию сюрприз, оставьте поле пустым если нужно.</p>
+			<p>РќРѕРјРёРЅР°С†РёСЏ СЃСЋСЂРїСЂРёР·, РІРІРµРґРёС‚Рµ РѕС‚ 1 РґРѕ3 РёРіСЂРѕРєРѕРІ</p>
 <?php	for ( $i = 0; $i < 3; $i++) 
-			echo "<input type='text' name='Surprise[]' placeholder='Ник игрока' list='players_list'/>";
+			echo "<input type='text' name='Surprise[]' placeholder='ГЌГЁГЄ ГЁГЈГ°Г®ГЄГ ' list='players_list'/>";
 ?>
 		</div>		
-			Укажите победившую команду
+			РџРѕР±РµРґРёР»Р° РєРѕРјР°РЅРґР°:
 			<select name="result">
 				<option value="City" selected>City</option>
 				<option value="Mafia">Mafia</option>
@@ -51,6 +54,10 @@
 <?php	foreach ($obj['players'] as $player)
     		echo "<option>".$player['Name']."</option>";?>
 </datalist>
+<datalist id="masters_list">
+<?php	foreach ($obj['masters'] as $master)
+    		echo "<option>".$master['MasterName']."</option>";?>
+</datalist>
 <datalist id="roles_list">
     		<option>citizen</option>
 		<option>sherif</option>
@@ -58,4 +65,6 @@
 		<option>don</option>	
 </datalist>
 </div>
+<?php getView("Footer.inc", $obj);?>
+
 </body>

@@ -6,11 +6,11 @@
 	<?php getView("HeaderView.inc", $obj);?>
 	<div>
 		<form action="authAdmin.php" method="post">
-  			<p><input type="text" name="Name"></p>
-			<p><input type="text" name="Pass"></p>
-  			<p><input type="submit" value="Authorize"></p>
+			<p><input type="text" name="Pass" placeholder='Enter password'></p>
+  			<p><input type="submit" value="Authorize" ></p>
  		</form>
 	</div>
-	<?php getView("FooterView.inc", $obj);?>
+<?php getView("Footer.inc", $obj);?>
+
 </body>
 </html>
