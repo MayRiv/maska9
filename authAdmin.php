@@ -14,7 +14,7 @@
 		if (MD5($_POST['Pass']) === $passwordAdmin)
 		{		
 			$_SESSION['authorizedAdmin'] = 1;
-			header("Location: /?action=insertGame");
+			header("Location: /maska9/?action=insertGame");
 			
 		}
 		else echo "Wrong password or login";

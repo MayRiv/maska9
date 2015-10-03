@@ -63,14 +63,14 @@ class System
 		session_start();
 		if ($_SESSION['authorizedAdmin'] <>1) 
 		{
-			header("Location: /authAdmin.php");
+			header("Location: maska9/authAdmin.php");
 		}
 		else
 		{
 			$objects = null;
 			if (isset($_GET['players']))
 			{
-				$players = SQL("Select player,SUM(Role) + SUM(BestMove) + SUM(BestVotes) as points from PlayerGame group by player order by points DESC", null)->getAll();
+				$players = SQL("Select player,SUM(Role) + SUM(BestMove) + SUM(BestVotes) - SUM(Penalty) as points from PlayerGame group by player order by points DESC", null)->getAll();
 				$objects = array("title"=>"player", 'list'=>$players);
 			}
 			if (isset($_GET['teams']))
@@ -90,7 +90,7 @@ GROUP BY player) t group by team order by points DESC", null)->getAll();
 			}
 			if (isset($_GET['best']))
 			{
-				$players = SQL("select player, count(*) as rating FROM `BestPlayersNominated`  group by player order by rating DESC", null)->getAll();
+				$players = SQL("select v1.player,  points  as rating, votes FROM (select player, count(*) as points from BestPlayersNominated GROUP by player) as v1 JOIN (select player, SUM(`PlayerGame`.`BestVotes`) as votes from PlayerGame group by player) as v2 on(v1.player = v2.player) order by rating DESC, votes DESC", null)->getAll();
 				for($i = 0; $i < count($players); $i++)
 				{
 					$players[$i]['points'] = $players[$i]['rating'] . "(".$players[$i]['votes'].")";
@@ -140,7 +140,7 @@ GROUP BY player) t group by team order by points DESC", null)->getAll();
 		session_start();
 		if ($_SESSION['authorizedCaptain'] <>1) 
 		{
-			header("Location: /authCaptain.php");
+			header("Location: /maska9/authCaptain.php");
 		}
 		else
 		{
@@ -173,7 +173,7 @@ GROUP BY player) t group by team order by points DESC", null)->getAll();
 		session_start();
 		if ($_SESSION['authorizedAdmin'] <>1) 
 		{
-			header("Location: /authAdmin.php");
+			header("Location: /maska9/authAdmin.php");
 		}
 		else
 		{

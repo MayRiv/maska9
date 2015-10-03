@@ -1,11 +1,14 @@
 <?php
 	require("viewer.inc");
 	require("DBManager.inc");
-	$host = "mysql.hostinger.com.ua";
+	/*$host = "mysql.hostinger.com.ua";
 	$dbName = "u558605037_maska";
 	$user = "u558605037_maska";
-	$password = "konoplya_1";
-
+	$password = "konoplya_1";*/
+	$host = "localhost";
+	$dbName = "maska9";
+	$user = "root";
+	$password = "";
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
 		session_start();
@@ -15,7 +18,7 @@
 		{		
 			$_SESSION['authorizedCaptain'] = 1;
 			$_SESSION['team'] = $_POST['Team'];
-			header("Location: /?action=getTeams");
+			header("Location: /maska9/?action=getTeams");
 		}
 		else echo "Wrong password or login";
 	}

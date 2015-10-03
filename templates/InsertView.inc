@@ -3,7 +3,7 @@
 <div id="inserter">
 <div>
 	
-	<form action="/?action=insertGame" method="post">
+	<form action="/maska9/?action=insertGame" method="post">
 		<div>
 		<p><input type='text' name="Master" placeholder="Ник ведущего" list='masters_list'></p>
 		<p><input type='text' name="RoundNumber" placeholder="Номер раунда"></p>			
