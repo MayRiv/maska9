@@ -18,9 +18,7 @@
 		for ($i = 0; $i < 10; $i++)
 		{
 			echo "<tr><td>".($i+1)."</td>";
-
 			foreach ($obj['stat'] as $player => $stat) {
-				
 				echo "<td>".$stat[$i][0]."</td><td>".$stat[$i][1]."</td><td>".$stat[$i][2]."</td>";
 			}
 			echo "</tr>";

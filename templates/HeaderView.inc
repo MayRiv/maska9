@@ -6,24 +6,24 @@
 <div id="css-menu-wrapper">
 		<div id="css-menu">
 		<ul>
-			<li><a href="/maska9/?action=getPlacing">
+			<li><a href="/?action=getPlacing">
 				<span class="text-top">Рассадка игроков</span>
 				<span class="text-bottom">Рассадка на столы</span></a></li>
-			<li><a href="/maska9/?action=getTeams">
+			<li><a href="/?action=getTeams">
 				<span class="text-top">Командный рейтинг</span>
 				<span class="text-bottom">Статистика игроков</span>
 			</a></li>
 			
 			
-			<li><a href="/maska9/?action=insertGame">
+			<li><a href="/?action=insertGame">
 				<span class="text-top">Добавить игру</span>
 				<span class="text-bottom">Для организатора</span>
 			</a></li>
-			<li><a href="/maska9/?action=adminPanel">
+			<li><a href="/?action=adminPanel">
 				<span class="text-top">Рейтинг номинаций</span>
 				<span class="text-bottom">Для организатора</span>
 			</a></li>
-			<li><a href="/maska9/?action=showGames">
+			<li><a href="/?action=showGames">
 				<span class="text-top">Подробно про игры</span>
 				<span class="text-bottom">Для организатора</span>
 			</a></li>
