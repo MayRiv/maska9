@@ -24,7 +24,7 @@ class System
 	public function showGames()
 	{
 		session_start();
-		if ($_SESSION['authorizedAdmin'] <>1) 
+		if (/*$_SESSION['authorizedAdmin'] <>1*/0) 
 		{
 			header("Location: /authAdmin.php");
 		}
@@ -61,9 +61,9 @@ class System
 	public function getAdminPanel()
 	{
 		session_start();
-		if ($_SESSION['authorizedAdmin'] <>1) 
+		if (/*$_SESSION['authorizedAdmin'] <>1*/0) 
 		{
-			header("Location: maska9/authAdmin.php");
+			header("Location: /authAdmin.php");
 		}
 		else
 		{
@@ -75,7 +75,7 @@ class System
 			}
 			if (isset($_GET['teams']))
 			{
-				$teams = SQL("select team, SUM(p) as points from (SELECT Teams.Name as team, Role + BestMove + BestVotes - Penalty AS p
+				$teams = SQL("select team, SUM(p) as points from (SELECT Teams.Name as team, sum(Role) + sum(BestMove) + sum(BestVotes) - sum(Penalty) AS p
 FROM PlayerGame
 JOIN Players ON ( Players.Name = PlayerGame.player ) 
 JOIN Teams
@@ -140,7 +140,7 @@ GROUP BY player) t group by team order by points DESC", null)->getAll();
 		session_start();
 		if ($_SESSION['authorizedCaptain'] <>1) 
 		{
-			header("Location: /maska9/authCaptain.php");
+			header("Location: /authCaptain.php");
 		}
 		else
 		{
@@ -173,7 +173,7 @@ GROUP BY player) t group by team order by points DESC", null)->getAll();
 		session_start();
 		if ($_SESSION['authorizedAdmin'] <>1) 
 		{
-			header("Location: /maska9/authAdmin.php");
+			header("Location: /authAdmin.php");
 		}
 		else
 		{
@@ -230,6 +230,10 @@ SQL("insert into `BestPlayersNominated`(`player`, `gameId`) values (?,?)", array
 					{
 						if ($info['Role'] === "Don" || $info['Role'] === "Mafia")
 							$rolePoints = 15;
+					}
+					if ($_POST['result'] === "Draw")
+					{
+							$rolePoints = 7;
 					}
 SQL("INSERT INTO `PlayerGame`(`Id`, `Player`,`GameId`,`Role`,`BestVotes`,`BestMove`,`DressCode`,`Surprise`,`Penalty`) VALUES (null,?,?,?,?,?,?,?,?)", array($playerName, $gameId, $rolePoints, $info['BestVotes'], $info['BestMove'], $info['DressCode'], $info["Surprise"], $info['Penalty']));
 				}

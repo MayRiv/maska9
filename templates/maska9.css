@@ -99,3 +99,8 @@ table {
 #inserter{
 	text-align: center;	
 }
+#counters {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
