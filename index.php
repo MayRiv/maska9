@@ -2,10 +2,10 @@
 	require("viewer.inc");
 	require("DBManager.inc");
 	require("System.inc");
-	$host = "localhost";
-	$dbName = "maska9";
-	$user = "root";
-	$password = "";
+	$host = "mysql.hostinger.com.ua";
+	$dbName = "u558605037_maska";
+	$user = "u558605037_maska";
+	$password = "starmaf";
 	DBManager::getInstance()->connect($host, $dbName, $user, $password);
 	if (isset($_GET['action']))
 	{
