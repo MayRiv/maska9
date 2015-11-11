@@ -26,5 +26,5 @@ bmD.write('<a href="http://www.bigmir.net/" target="_blank" onClick="img=new Ima
 <a href="http://www.bigmir.net/" target="_blank"><img src="//c.bigmir.net/?v16942617&s16942617&t0" width="88" height="31" alt="bigmir)net TOP 100" title="bigmir)net TOP 100" border="0" /></a>
 </noscript>
 <!--bigmir)net TOP 100-->
-<p>Автор сайта - Май.</p>
+<p>Автор сайта - <a href="http://vk.com/id131327873">Май</a>. <a href="bigbenrating.com">Рейтинг клуба БигБен</a></p>
 </div>
